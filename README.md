@@ -34,9 +34,9 @@ print(someValue.value) // Output: "Hello World"
 ```swift
 var dumb = DumbStruct()
         
-((dumb + \.string - "Hello!")
+(((dumb + \.string - "Hello!")
      + \.double - 3.14)
-     + \.array - [1, 43, 6, true]
+     + \.array - [1, 43, 6, true])
 
 XCTAssertEqual(dumb.string, "Hello, World!")
 ```
