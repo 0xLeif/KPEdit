@@ -22,20 +22,21 @@ print(someValue.value) // Output: "Hello World"
 ```
 
 #### Known Issue
-![issue](https://user-images.githubusercontent.com/8268288/90844321-42141c80-e329-11ea-824b-a3f7ba222038.png)
+![CleanShot 2020-08-21 at 17 20 26](https://user-images.githubusercontent.com/8268288/90939924-a212cd80-e3d2-11ea-9a25-e7d3c7ad3a56.png)
+> error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+        dumb + \.string - "Hello!" + \.double - 3.14 + \.array - [1, 43, 6, true]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
 
 #### Solution
 
 **Make sure to use parentheses!**
 
 ```swift
-var v = UIView()
+var dumb = DumbStruct()
+        
+((dumb + \.string - "Hello!")
+     + \.double - 3.14)
+     + \.array - [1, 43, 6, true]
 
-let view: UIView = v + \.backgroundColor - .red 
-
-((v + \.layer.cornerRadius - 3)
-    + \.backgroundColor - .blue)
-    + \.layer.borderWidth - 6
-
-print(v.backgroundColor) // Output: ".blue"
+XCTAssertEqual(dumb.string, "Hello, World!")
 ```
